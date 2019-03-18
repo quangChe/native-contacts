@@ -4,8 +4,6 @@ import {StyleSheet, View} from 'react-native';
 import ContactThumbnail from '../components/ContactThumbnail';
 import DetailListItem from '../components/DetailListItem';
 
-import {fetchRandomContact} from '../utils/api';
-
 import colors from '../utils/colors';
 
 export default class Profile extends React.Component {
@@ -13,14 +11,9 @@ export default class Profile extends React.Component {
     contact: {},
   };
 
-  async componentDidMount() {
-    const contact = await fetchRandomContact();
-    
-    this.setState({contact});
-  }
-
   render() {
-    const {avatar, name, email, phone, cell} = this.state.contact;
+    const {navigation: {state: {params}}} = this.props;
+    const {avatar, name, email, phone, cell} = params.contact;
 
     return (
       <View style={styles.container}>

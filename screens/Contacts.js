@@ -31,9 +31,14 @@ export default class Contacts extends React.Component {
 
   renderContact = ({item}) => {
     const {name, avatar, phone} = item;
+    const {navigation} = this.props;
 
     return(
-      <ContactListItem name={name} avatar={avatar} phone={phone}/>
+      <ContactListItem 
+        name={name} 
+        avatar={avatar} 
+        phone={phone}
+        onPress={() => navigation.navigate('Profile')}/>
     );
   }
 

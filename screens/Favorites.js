@@ -15,6 +15,7 @@ const keyExtractor = ({phone}) => phone;
 
 export default class Favorites extends React.Component {
   static navigationOptions = {
+    header: () => <View style={{height:20, backgroundColor: 'rgba(0,0,0,0)'}}></View>,
     title: 'Favorites',
   };
 

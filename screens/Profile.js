@@ -7,8 +7,16 @@ import DetailListItem from '../components/DetailListItem';
 import colors from '../utils/colors';
 
 export default class Profile extends React.Component {
-  state = {
-    contact: {},
+  static navigationOptions = ({navigation: {state: {params}}}) => {
+    const {name} = params.contact;
+    
+    return {
+      title: name,
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: colors.blue,
+      }
+    }
   };
 
   render() {

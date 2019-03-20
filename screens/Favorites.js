@@ -10,14 +10,22 @@ import {
 import {fetchContacts} from '../utils/api';
 
 import ContactThumbnail from '../components/ContactThumbnail';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import colors from '../utils/colors';
 
 const keyExtractor = ({phone}) => phone;
 
 export default class Favorites extends React.Component {
-  static navigationOptions = {
-    header: () => <View style={{height:20, backgroundColor: 'rgba(0,0,0,0)'}}></View>,
+  static navigationOptions = ({navigation: {toggleDrawer}}) => ({
     title: 'Favorites',
-  };
+    headerLeft: (
+      <MaterialIcons  
+        name="menu"
+        size={24}
+        style={{color: colors.black, marginLeft: 10}}
+        onPress={() => toggleDrawer()}/>
+    )
+  });
 
   state = {
     contacts: [],

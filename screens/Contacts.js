@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet, 
   View,
@@ -7,17 +6,26 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
+import {MaterialIcons} from '@expo/vector-icons';
 
 import ContactListItem from '../components/ContactListItem';
 import {fetchContacts} from '../utils/api';
+import colors from '../utils/colors';
 
 const keyExtractor = ({phone}) => phone;
 
 export default class Contacts extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation: {toggleDrawer}}) => ({
     title: 'All Contacts',
     headerBackTitle: 'Contacts',
-  };
+    headerLeft: (
+      <MaterialIcons
+        name="menu"
+        size={24}
+        style={{color: colors.black, marginLeft: 10}}
+        onPress={() => toggleDrawer()}/>
+    )
+  });
 
   state = {
     contacts: [],
